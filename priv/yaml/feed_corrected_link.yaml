@@ -1,0 +1,6 @@
+amazon.co.jp:
+  - ref
+  - ie
+aws.amazon.com:
+  - ref
+  - nc1

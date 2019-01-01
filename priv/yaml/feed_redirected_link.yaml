@@ -1,0 +1,7 @@
+www3.keizaireport.com:
+  - Floki.find(fst, "a.bb")
+  - Floki.find(fst, "a")
+elixirstatus.com:
+  - Floki.find(fst, ".post__body a")
+www.rubyflow.com:
+  - Floki.find(fst, ".content a")

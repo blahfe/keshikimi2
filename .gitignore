@@ -1,0 +1,28 @@
+/local
+/log
+/tmp
+/public
+/config/plagger
+/lib/pigtail
+/lib/plagger
+/db/Deduped*
+/.old
+/.terraform
+/terraform.tfstate*
+npm-debug.loggibo 2.1.0 by Simon Whitaker <sw@netcetera.org>
+https://github.com/simonwhitaker/gibo
+
+### https://raw.github.com/github/gitignore/18654b47c86bef38add5cd091ec2dac7d6e6e37b/Elixir.gitignore
+
+/_build
+/cover
+/deps
+/doc
+/.fetch
+erl_crash.dump
+*.ez
+*.beam
+/config/*.secret.exs
+.elixir_ls/
+
+nohup.out
