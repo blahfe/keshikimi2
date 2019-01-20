@@ -4,8 +4,6 @@ defmodule Keshikimi2Feed.Publisher do
   alias Keshikimi2Feed.Subscriber
   require IEx
 
-  @seconds_of_day 86_400
-
   defmodule State do
     @moduledoc false
     defstruct [
@@ -173,7 +171,7 @@ defmodule Keshikimi2Feed.Publisher do
                           item_elems |> Enum.filter(fn ie -> elem(ie, 0) in ["title", "link"] end) do
                      {item_link, item_title, feed_tags}
                    else
-                     [{"title", _, [item_title]}, {"link", _, [item_link]}] ->
+                     [{"title", _, [_item_title]}, {"link", _, [item_link]}] ->
                        {item_link, "", feed_tags}
 
                      _ ->
