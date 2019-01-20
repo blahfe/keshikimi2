@@ -120,7 +120,7 @@ defmodule Keshikimi2.HatenaBookmark.AddEntry do
                  get: false
                ) do
           do_add_entries_to_hb(payload)
-          Logger.info("add entry: #{item_link}")
+          Logger.info("add entry: #{corrected_link}")
         end
 
         archive_link(item_link)
@@ -205,11 +205,16 @@ defmodule Keshikimi2.HatenaBookmark.AddEntry do
         true ->
           redirected_link_rules[key]
           |> Enum.reduce(redirected_link, fn rule, acc ->
-            with [{_, [{"href", href} | _], _} | _] <-
+            with {[{_, [{"href", href} | _], _}], _} <-
                    Code.eval_string(rule, fst: HTTPoison.get!(acc).body),
-                 %URI{host: host, scheme: scheme} <- URI.parse(acc),
+                 %URI{host: host, scheme: scheme} <- URI.parse(href),
                  %URI{path: path} <- URI.parse(href) do
-              "#{scheme}://#{host}#{path}"
+              unless host do
+                %URI{host: host, scheme: scheme} = URI.parse(acc)
+                "#{scheme}://#{host}#{path}"
+              else
+                "#{scheme}://#{host}#{path}"
+              end
             else
               _ -> acc
             end
